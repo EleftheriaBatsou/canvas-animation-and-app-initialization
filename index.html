@@ -1,0 +1,47 @@
+<html>
+<head>
+
+<link href="style.css" rel="stylesheet" type="text/css">
+
+<script>
+function initCanvas(){
+    var ctx = document.getElementById('my_canvas').getContext('2d');
+    var cW = ctx.canvas.width, cH = ctx.canvas.height;
+    var y = 0, x = 0;
+    
+  function animate(){
+        ctx.save();
+        ctx.clearRect(0, 0, cW, cH);
+        // Draw here
+        ctx.rotate(-.1);
+        ctx.fillStyle = "magenta";
+        ctx.fillRect(0, y, 50, 50);
+        ctx.rotate(.3);
+        ctx.fillStyle = "blue";
+        ctx.fillRect(x, 0, 50, 50);
+        y++;
+        x++;
+        ctx.restore();
+    }
+    var animateInterval = setInterval(animate, 30);
+    ctx.canvas.addEventListener('click', function(event) {
+        clearInterval(animateInterval);
+    });
+}
+window.addEventListener('load', function(event) {
+    initCanvas();
+});
+</script>
+</head>
+<body>
+  
+  <h3 style="text-align: center">Canvas | Animation and App Initialization </h3>
+  
+<canvas id="my_canvas" width="500" height="300"></canvas>
+  
+  <div style="text-align: center">
+    <h5><a href="http://www.eleftheriabatsou.com" target="_blank">Eleftheria Batsou</a> | <a href="http://codepen.io/EleftheriaBatsou" target="_blank">Projects</a></h5>
+  </div> <!-- end footer -->
+  
+</body>  
+</html>
